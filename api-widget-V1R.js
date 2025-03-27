@@ -1,50 +1,114 @@
-// Nothing added yet
-function displayForm() {
-    const formContainer = document.getElementById("formContainer");
-    
-    // Create the form element
-    const form = document.createElement("form");
-    form.setAttribute("id", "userForm");
+ // Big payment Instance
 
-    // Create input fields for the form
-    const nameLabel = document.createElement("label");
-    nameLabel.setAttribute("for", "name");
-    nameLabel.textContent = "Name: ";
-    const nameInput = document.createElement("input");
-    nameInput.setAttribute("type", "text");
-    nameInput.setAttribute("id", "name");
-    nameInput.setAttribute("name", "name");
-    nameInput.setAttribute("required", "true");
+// blue color : #3E4658 rgb(62, 70, 88)
+// pink color : #C38A89 rgb(195, 138, 137)
+// red color : #EC241C rgb(236, 36, 28)
 
-    const emailLabel = document.createElement("label");
-    emailLabel.setAttribute("for", "email");
-    emailLabel.textContent = "Email: ";
-    const emailInput = document.createElement("input");
-    emailInput.setAttribute("type", "email");
-    emailInput.setAttribute("id", "email");
-    emailInput.setAttribute("name", "email");
-    emailInput.setAttribute("required", "true");
+ const createModal = (product, desc, price, currency, ) => {
+        // Create modal container with innerHTML
+        const modal = document.createElement('div');
+        modal.classList.add('modal__overlay');
 
-    const submitButton = document.createElement("button");
-    submitButton.setAttribute("type", "submit");
-    submitButton.textContent = "Submit";
+        modal.innerHTML = `
+            <style> @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');</style>
+            
+            <div class="modal__content">
+                <div class = "modal__container"> 
+                    <div class= "modal__info__section">
+                        <h1>Product info</h1>
+                        <div class='modal__product__detail'>
+                            <p>Product <br> ${product} </p>
+                            <p>Description. <br> ${desc} </p>
+                            <p class = "amount__detail">Amount : <span> ${price} ${currency} </span> </p>
+                        </div>
+                    </div>
+                    <div class= "modal__form__section">
+                        <h1>Please select the payment type </h1>
+                       <form id="payment-form">
+                            <div class="payment-option" id="paypal-option" onclick="selectGroup(this)">
+                                
+                                <label for="paypal">
+                                    <img src="https://res.cloudinary.com/desx1y7nl/image/upload/v1743023003/api-possapay/yrf7ze4xx3yhx9bb9yhy.png" alt="PayPal Logo" class="payment-logo">
+                                    <div class="pay-desc">
+                                        <span>PayPal</span>
+                                        <small>Faite un paiement simple avec Paypal </small>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="payment-option" id="card-option" onclick="selectGroup(this)">
+                                
+                                <label for="card">
+                                    <img src="https://res.cloudinary.com/desx1y7nl/image/upload/v1743021586/api-possapay/cguguzsllmpphpzqvkg4.png" alt="Card Logo" class="payment-logo">
+                                    <div class="pay-desc">
+                                        <span>VISA</span> 
+                                        <small>Pour tous type de carte. VISA - Mater Card - American Express </small>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="payment-option" id="mobilepay-option" onclick="selectGroup(this)">
+                               
+                                <label for="mobilepay">
+                                    <img src="https://res.cloudinary.com/desx1y7nl/image/upload/v1741871774/api-possapay/mdns371wwkkxjx5fnwpr.png" alt="Mobile Pay Logo" class="payment-logo">
+                                    <div class="pay-desc">
+                                        <span>Possa Pay</span>
+                                        <small>Soyez parmi les premier a tester le nouveau mode de paiement</small>
+                                    </div>
+                                </label>
+                            </div>    
+                            
+                            <div class="btn__container__modal">
+                                <button class="modal__form__btn">Continuer</button>
+                            </div>                        
+                            
+                        </form>
 
-    // Append label and inputs to the form
-    form.appendChild(nameLabel);
-    form.appendChild(nameInput);
-    form.appendChild(document.createElement("br")); // Add line break for clarity
-    form.appendChild(emailLabel);
-    form.appendChild(emailInput);
-    form.appendChild(document.createElement("br"));
-    form.appendChild(submitButton);
+                    </div>
+                
+                </div> 
 
-    // Clear any previous content in formContainer and append the new form
-    formContainer.innerHTML = '';
-    formContainer.appendChild(form);
 
-    // Optional: Handle form submission
-    form.onsubmit = function(event) {
-      event.preventDefault(); // Prevent actual form submission for demo purposes
-      alert("Form submitted with Name: " + nameInput.value + " and Email: " + emailInput.value);
-    }
-  }
+            </div>
+           
+        `;
+
+        // Add event listener for form submission
+        const form = modal.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted');
+            modal.style.display = 'none';  // Close the modal on submit
+        });
+
+        // Close modal logic (optional)
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        return modal;
+}
+
+function selectGroup(element) {
+    // Remove 'selected' class from all groups
+    const groups = document.querySelectorAll('.payment-option');
+    groups.forEach(group => group.classList.remove('selected'));
+
+    // Add 'selected' class to the clicked group
+    element.classList.add('selected');
+}
+
+
+ // Show the modal when needed
+    const amount = '500000';
+ function showModal(productName, description, amount,currency) {
+    const modal = createModal(productName, description, amount, currency);
+    document.body.appendChild(modal);
+    modal.style.display = 'flex';
+}
+
+
+// const startPayment = {
+//     payment : async (data) => {
+//     }
+// }
