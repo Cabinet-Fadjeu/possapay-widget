@@ -86,6 +86,13 @@
     cursor: pointer;
     transition: border 0.3s ease;
 }
+
+.modal__form__container{
+    display: flex;
+}
+
+
+
 .payment-option>label{
     display: flex;
     align-items: center;
