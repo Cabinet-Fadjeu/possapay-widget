@@ -100,7 +100,7 @@ const createModal = (productName, productId, desc, price, currency, user_email, 
                 currency: currency,
                 paymentChoice: paymentChoice
             };
-            window.location.href = `http://localhost:5173/api-payment?productName=${productName}&amnt=${formData.amount}&currency=${formData.currency}&email=${formData.user_email}&serviceKey=${formData.service_publicKey}&payType=${formData.paymentChoice}&productId=${formData.producId}`;
+            window.location.href = `https://www.possapay.com/api-payment?productName=${productName}&amnt=${formData.amount}&currency=${formData.currency}&email=${formData.user_email}&serviceKey=${formData.service_publicKey}&payType=${formData.paymentChoice}&productId=${formData.producId}`;
 
         } else {
             alert('Please select a payment method.');
