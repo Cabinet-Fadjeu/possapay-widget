@@ -21,12 +21,57 @@
     width: 50%; 
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 }
+@media only screen and (max-width: 600px) {
+  .modal__content{
+    width: 95%;
+  }
 
+}
+@media screen and (min-width: 601px) and (max-width: 850px) {
+    .modal__content{
+        width: 95%;
+    }
+}
+
+@media screen and (min-width: 851px) and (max-width: 1300px) {
+    .modal__content{
+        width: 95%;
+    }
+}
+@media screen and (min-width: 1301px) and (max-width: 1329px) {
+    .modal__content{
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1330px) and (max-width: 1569px) {
+    .modal__content{
+        width: 65%;
+    }
+}
+@media screen and (min-width: 1570px) and (max-width: 1727px) {
+    .modal__content{
+        width: 65%;
+    }
+}
 .modal__content>.modal__container{
     display: flex;
     background-color: transparent;
     align-items: center;
 }
+
+@media only screen and (max-width: 600px) {
+    .modal__content>.modal__container{
+      flex-direction: column;
+    }
+  
+}
+@media screen and (min-width: 601px) and (max-width: 850px) {
+    .modal__content>.modal__container{
+        flex-direction: column;
+    }
+}
+
 
 /* Product description */
 .modal__container>.modal__info__section{
@@ -42,6 +87,21 @@
 
 
 }
+@media only screen and (max-width: 600px) {
+    .modal__container>.modal__info__section{
+      display: none;
+      
+    }
+  
+}
+@media screen and (min-width: 601px) and (max-width: 850px) {
+    .modal__container>.modal__info__section{
+        display: none;
+        
+    }
+}
+
+
 .modal__container>.modal__info__section>h1{
     font-size:x-large;
     text-decoration: underline;
@@ -148,36 +208,41 @@ label>.pay-desc{
     color: #EC241C;
 }
 
-/* Modal Header */
-/* .modal-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-} */
-
-/* .modal-header>h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgba(0, 0, 0, 0.7);
-    text-transform: uppercase;
-    font-size: medium;
-    font-weight: lighter;
-    display: flex;
-    align-items: center;
+@media only screen and (max-width: 600px) {
+    
+    .modal__container>.modal__form__section{
+      width: 90%;
+      height: auto;
+    }
+    .modal__form__section>h1{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    .payment-option {
+        display: block;
+    }
+    .modal__form__container{
+        display: block;
+    }
+  
 }
-.modal-header>h2>span{
-    text-transform: capitalize;
-    font-size: small;
-    font-weight: bold;
-    color: red;
+@media screen and (min-width: 601px) and (max-width: 850px) {
+     
+    .modal__container>.modal__form__section{
+        width: 70%;
+        height: auto;
+    }
+    .modal__form__section>h1{
+        text-align: center;
+        font-size: 2rem;
+    }
 }
-
-.modal-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-} */
-
-
+@media screen and (min-width: 851px) and (max-width: 1300px) {
+    .modal__container>.modal__form__section{
+       
+        height: auto;
+    }
+}
 /* Container section */
 
 .modal-action-container{
